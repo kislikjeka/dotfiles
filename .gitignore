@@ -1,1 +1,4 @@
 .config/tmux/plugins
+.config/github-copilot
+.config/raycast
+.config/dlv

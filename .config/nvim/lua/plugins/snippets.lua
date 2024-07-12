@@ -1,33 +1,31 @@
 return {
-  'nvim-cmp',
-  dependencies = {
-    {
-      'garymjr/nvim-snippets',
-      opts = {
-        friendly_snippets = true,
-        create_cmp_source = true,
-      },
-      dependencies = { 'rafamadriz/friendly-snippets' },
-    },
-  },
-  keys = {
-    {
-      '<C-l>',
-      function()
-        return vim.snippet.active { direction = 1 } and '<cmd>lua vim.snippet.jump(1)<cr>' or '<C-l>'
-      end,
-      expr = true,
-      silent = true,
-      mode = { 'i', 's' },
-    },
-    {
-      '<C-h>',
-      function()
-        return vim.snippet.active { direction = -1 } and '<cmd>lua vim.snippet.jump(-1)<cr>' or '<C-h>'
-      end,
-      expr = true,
-      silent = true,
-      mode = { 'i', 's' },
-    },
+  {
+    'L3MON4D3/LuaSnip',
+    -- follow latest release.
+    version = 'v2.*', -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+    -- install jsregexp (optional!).
+    build = 'make install_jsregexp',
+
+    dependencies = { 'rafamadriz/friendly-snippets' },
+
+    config = function()
+      local ls = require 'luasnip'
+      ls.filetype_extend('javascript', { 'jsdoc' })
+
+      -- vim.keymap.set({"i"}, "<C-s>e", function() ls.expand() end, {silent = true})
+
+      vim.keymap.set({ 'i', 's' }, '<Tab>', function()
+        ls.jump(1)
+      end, { silent = true })
+      vim.keymap.set({ 'i', 's' }, '<S-Tab>', function()
+        ls.jump(-1)
+      end, { silent = true })
+
+      vim.keymap.set({ 'i', 's' }, '<C-E>', function()
+        if ls.choice_active() then
+          ls.change_choice(1)
+        end
+      end, { silent = true })
+    end,
   },
 }
