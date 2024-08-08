@@ -1,4 +1,10 @@
 .config/tmux/plugins
-.config/github-copilot
-.config/raycast
-.config/dlv
+
+.config
+
+!.config/nvim
+!.config/k9s
+!.config/tmux
+!.config/wezterm
+!.config/lazygit
+

@@ -30,8 +30,24 @@ return {
         mapping = cmp.mapping.preset.insert {
           ['<C-n>'] = cmp.mapping.select_next_item(), -- Select the [p]revious item
           ['<C-p>'] = cmp.mapping.select_prev_item(),
-          ['<Tab>'] = cmp.mapping.select_next_item(),
+          ['<Tab>'] = function(fallback)
+            if cmp.visible() then
+              cmp.mapping.select_next_item()
+            else
+              fallback()
+            end
+          end,
           ['<S-Tab>'] = cmp.mapping.select_prev_item(),
+          ['<C-l>'] = cmp.mapping(function()
+            if luasnip.expand_or_locally_jumpable() then
+              luasnip.expand_or_jump()
+            end
+          end, { 'i', 's' }),
+          ['<C-h>'] = cmp.mapping(function()
+            if luasnip.locally_jumpable(-1) then
+              luasnip.jump(-1)
+            end
+          end, { 'i', 's' }),
           ['<CR>'] = cmp.mapping.confirm { select = true },
           ['<C-e>'] = function(fallback)
             cmp.abort()

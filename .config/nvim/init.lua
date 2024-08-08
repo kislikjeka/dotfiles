@@ -18,7 +18,6 @@ vim.opt.clipboard = 'unnamedplus'
 vim.g.lazydev_enabled = true
 -- Enable break indent
 vim.opt.breakindent = true
-
 -- Save undo history
 vim.opt.undofile = true
 

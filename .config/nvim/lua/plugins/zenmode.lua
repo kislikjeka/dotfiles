@@ -31,10 +31,6 @@ return {
         twilight = { enabled = false },
         gitsigns = { enabled = false }, -- disables git signs
         tmux = { enabled = false }, -- disables the tmux statusline
-        wezterm = {
-          enabled = true,
-          font = '+20', -- (10% increase per step)
-        },
       },
     }
 
