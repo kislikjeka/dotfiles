@@ -5,7 +5,7 @@ vim.g.have_nerd_font = true
 
 -- Numbers
 vim.opt.number = true
-vim.opt.relativenumber = true
+-- vim.opt.relativenumber = true
 
 vim.opt.mouse = 'a'
 
