@@ -10,6 +10,9 @@
 
 # Makes sense for user specific applications that shouldn't be available system-wide
   home.packages = with pkgs;[
+  fd
+  bat
+  ripgrep
   (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
 
