@@ -35,6 +35,8 @@
     "/run/current-system/sw/bin"
       "$HOME/.nix-profile/bin"
   ];
+  
+  xdg.enable = true;
 
   programs = {
       fzf.enable = true;
