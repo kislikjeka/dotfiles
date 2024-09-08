@@ -41,6 +41,7 @@
   xdg.enable = true;
 
   programs = {
+      atuin.enable = true;
       ripgrep.enable = true;
       fzf.enable = true;
       home-manager.enable = true;
