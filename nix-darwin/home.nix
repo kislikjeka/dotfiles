@@ -12,7 +12,6 @@
   home.packages = with pkgs;[
   fd
   bat
-  ripgrep
   (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
 
@@ -42,6 +41,7 @@
   xdg.enable = true;
 
   programs = {
+      ripgrep.enable = true;
       fzf.enable = true;
       home-manager.enable = true;
       starship.enable = true;
