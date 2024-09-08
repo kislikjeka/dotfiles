@@ -39,20 +39,10 @@
   xdg.enable = true;
 
   programs = {
-      fzf = {
-        enable = true;
-        enableFishIntegration = true;
-      };
+      fzf.enable = true;
       home-manager.enable = true;
-      starship = {
-        enable = true;
-        enableFishIntegration = true;
-      };
-      zoxide = {
-        enable = true;
-        enableFishIntegration = true;
-        options = [ "--cmd cd" ];
-      };
+      starship.enable = true;
+      zoxide.enable = true;
       fish.enable = true;
       zsh.enable = true;
   };
