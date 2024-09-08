@@ -47,7 +47,6 @@ inputs = {
       nixpkgs.hostPlatform = "aarch64-darwin";
       users.users.evgenijkislicenko = {
         home = "/Users/evgenijkislicenko";
-        shell = pkgs.fish;
       };
     };
   in
