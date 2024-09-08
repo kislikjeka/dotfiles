@@ -9,22 +9,23 @@
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
 # Makes sense for user specific applications that shouldn't be available system-wide
-  home.packages = [
+  home.packages = with pkgs;[
+  (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
-#    ".zshrc".source = ~/dotfiles/.zshrc;
-    ".config/wezterm".source = ~/dotfiles/wezterm;
-    ".config/starship".source = ~/dotfiles/starship;
-    ".config/nvim".source = ~/dotfiles/nvim;
-    ".config/nix".source = ~/dotfiles/nix;
-    ".config/nix-darwin".source = ~/dotfiles/nix-darwin;
-    ".config/tmux".source = ~/dotfiles/tmux;
-    ".config/lazygit".source = ~/dotfiles/lazygit;
-    ".config/fish".source = ~/dotfiles/fish;
-    ".config/k9s".source = ~/dotfiles/k9s;
+    ".zshrc".source = ../.zshrc;
+    ".config/wezterm".source = ../wezterm;
+ #   ".config/starship".source = ../starship;
+    ".config/nvim".source = ../nvim;
+    ".config/nix".source = ../nix;
+    ".config/nix-darwin".source = ../nix-darwin;
+    ".config/tmux".source = ../tmux;
+    ".config/lazygit".source = ../lazygit;
+    ".config/fish".source = ../fish;
+    ".config/k9s".source = ../k9s;
   };
 
   home.sessionVariables = {
