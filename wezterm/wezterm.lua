@@ -8,7 +8,7 @@ config.max_fps = 75
 config.animation_fps = 75
 --config.cursor_blink_ease_in = 'Constant'
 --config.cursor_blink_ease_out = 'Constant'
-config.default_prog = { "/opt/homebrew/bin/fish", "-l" }
+-- config.default_prog = { "/opt/homebrew/bin/fish", "-l" }
 config.window_background_opacity = 0.96
 
 config.font_size = 15

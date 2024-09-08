@@ -1,5 +1,5 @@
 {
-  description = "Example Darwin system flake";
+  description = "My Darwin system flake";
 
 inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -42,6 +42,7 @@ inputs = {
       # $ darwin-rebuild changelog
       system.stateVersion = 4;
 
+      nix.configureBuildUsers = true;
       # The platform the configuration will be used on.
       nixpkgs.hostPlatform = "aarch64-darwin";
       users.users.evgenijkislicenko.home = "/Users/evgenijkislicenko";
