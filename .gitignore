@@ -1,10 +1,2 @@
-.config/tmux/plugins
-
-.config
-
-!.config/nvim
-!.config/k9s
-!.config/tmux
-!.config/wezterm
-!.config/lazygit
+tmux/plugins
 
