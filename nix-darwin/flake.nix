@@ -45,7 +45,10 @@ inputs = {
       nix.configureBuildUsers = true;
       # The platform the configuration will be used on.
       nixpkgs.hostPlatform = "aarch64-darwin";
-      users.users.evgenijkislicenko.home = "/Users/evgenijkislicenko";
+      users.users.evgenijkislicenko = {
+        home = "/Users/evgenijkislicenko";
+        shell = pkgs.fish;
+      };
     };
   in
   {
