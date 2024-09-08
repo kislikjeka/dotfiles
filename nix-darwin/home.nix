@@ -15,7 +15,7 @@
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
-    ".zshrc".source = ~/dotfiles/.zshrc;
+#    ".zshrc".source = ~/dotfiles/.zshrc;
     ".config/wezterm".source = ~/dotfiles/wezterm;
     ".config/starship".source = ~/dotfiles/starship;
     ".config/nvim".source = ~/dotfiles/nvim;
@@ -40,15 +40,6 @@
       home-manager.enable = true;
       starship.enable = true;
       zoxide.enable = true;
-      zsh = {
-        enable = true;
-        initExtra = ''
-          # Add any additional configurations here
-          export PATH=/run/current-system/sw/bin:$HOME/.nix-profile/bin:$PATH
-          if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-            . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-          fi
-        '';
-      };
+      fish.enable = true;
   };
 }
