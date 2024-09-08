@@ -42,5 +42,6 @@
       starship.enable = true;
       zoxide.enable = true;
       fish.enable = true;
+      zsh.enable = true;
   };
 }
