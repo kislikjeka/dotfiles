@@ -97,6 +97,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
   { import = 'plugins' },
+  { import = 'lang' },
   -- See `:help gitsigns` to understand what the configuration keys do
 }, {
   ui = {

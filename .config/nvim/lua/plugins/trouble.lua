@@ -4,7 +4,6 @@ return {
     require('trouble').setup {
       focus = true,
       auto_jump = false,
-      auto_close = true,
       warn_no_results = false,
       preview = {
         type = 'split',
@@ -19,9 +18,10 @@ return {
           auto_preview = false,
           win = {
             size = 0.3,
+            position = 'left',
           },
           preview = {
-            position = 'left',
+            position = 'right',
           },
         },
       },
