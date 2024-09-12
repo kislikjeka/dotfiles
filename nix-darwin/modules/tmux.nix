@@ -47,8 +47,8 @@
     bind c new-window -c "#{pane_current_path}"
 
     bind q kill-pane
-    bind s split-window -c "#{pane_current_path}"
-    bind v split-window -h -c "#{pane_current_path}"
+    bind '"' split-window -v -c "#{pane_current_path}"
+    bind % split-window -h -c "#{pane_current_path}"
     bind -n M-Left resize-pane -L 5
     bind -n M-Right resize-pane -R 5
     bind -n M-Up resize-pane -U 5
