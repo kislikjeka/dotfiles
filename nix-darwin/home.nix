@@ -24,7 +24,6 @@
     ".config/nvim".source = ../nvim;
     ".config/nix".source = ../nix;
     ".config/nix-darwin".source = ../nix-darwin;
-    ".config/tmux".source = ../tmux;
     ".config/lazygit".source = ../lazygit;
     ".config/fish".source = ../fish;
     ".config/k9s".source = ../k9s;
@@ -49,5 +48,6 @@
       zoxide.enable = true;
       fish.enable = true;
       zsh.enable = true;
+      tmux = (import ./modules/tmux.nix { inherit pkgs; });
   };
 }

@@ -48,13 +48,9 @@ return {
       opts.adapters['neotest-golang'] = {
         go_test_args = {
           '-v',
-          -- "-count=1",
+          '-count=1',
           '-race',
-          -- "-p=1",
-          -- '-parallel=1',
-          '-coverprofile='
-            .. vim.fn.getcwd()
-            .. '/coverage.out',
+          '-p=1',
         },
 
         -- experimental
