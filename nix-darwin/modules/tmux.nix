@@ -30,8 +30,8 @@
     ];
 
   extraConfig = ''
-    # set -g default-terminal "tmux-256color"
-    # set-option -ga terminal-overrides ',xterm-256color:Tc'
+    set -g default-terminal "tmux-256color"
+    set-option -ga terminal-overrides ',xterm-256color:Tc'
     set -as terminal-features ",xterm-256color:RGB"
     set -g mouse on
 
