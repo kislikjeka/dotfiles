@@ -13,20 +13,30 @@ inputs = {
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager }:
   let
-    configuration = { pkgs, ... }: {
+    configuration = { pkgs, lib, ... }: {
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
+      
       environment = {
         systemPackages = with pkgs; [ 
-          vim
-          eza #ls
-          direnv
+          neovim
+          ripgrep
+          zoxide
+          obsidian
+          eza
+          tmux
+          fzf
+          git
         ];
     };
 
       # Auto upgrade nix package and the daemon service.
       services.nix-daemon.enable = true;
       # nix.package = pkgs.nix;
+ nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+             "obsidian"
+           ];
+         
 
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";

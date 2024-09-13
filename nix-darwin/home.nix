@@ -2,7 +2,9 @@
 # home-manager switch 
 
 { config, pkgs, ... }:
-
+let
+  inherit (config.lib.file) mkOutOfStoreSymlink;
+in
 {
   home.username = "evgenijkislicenko";
   home.homeDirectory = "/Users/evgenijkislicenko";
@@ -21,7 +23,7 @@
     ".zshrc".source = ../.zshrc;
     ".config/wezterm".source = ../wezterm;
  #   ".config/starship".source = ../starship;
-    ".config/nvim".source = ../nvim;
+    # ".config/nvim".source = ../nvim;
     ".config/nix".source = ../nix;
     ".config/nix-darwin".source = ../nix-darwin;
     ".config/lazygit".source = ../lazygit;
@@ -38,14 +40,13 @@
   ];
   
   xdg.enable = true;
+  xdg.configFile.nvim.source = mkOutOfStoreSymlink "/Users/evgenijkislicenko/dotfiles/nvim";
 
   programs = {
-      atuin.enable = true;
-      ripgrep.enable = true;
-      fzf.enable = true;
       home-manager.enable = true;
       starship.enable = true;
-      zoxide.enable = true;
+      zoxide = (import ./modules/zoxide.nix { inherit pkgs; });
+      neovim = (import ./modules/neovim.nix { inherit config pkgs; });
       fish.enable = true;
       zsh.enable = true;
       tmux = (import ./modules/tmux.nix { inherit pkgs; });
