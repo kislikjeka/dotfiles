@@ -53,5 +53,6 @@ in
     zsh = (import ./modules/zsh.nix { inherit config pkgs; });
     tmux = (import ./modules/tmux.nix { inherit pkgs; });
     wezterm = (import ./modules/wezterm.nix { inherit pkgs; });
+    k9s = (import ./modules/k9s.nix { inherit pkgs; });
   };
 }
