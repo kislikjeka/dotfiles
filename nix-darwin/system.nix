@@ -8,6 +8,11 @@
     dock.autohide = true;
     dock.orientation = "bottom";
     dock.show-recents = false;
+
+    finder.AppleShowAllExtensions = true;
+    finder.AppleShowAllFiles = true;
+    finder.FXPreferredViewStyle = "clmv";
+    finder.ShowPathbar = true;
   };
   # Set Git commit hash for darwin-version.
   system.configurationRevision = self.rev or self.dirtyRev or null;
