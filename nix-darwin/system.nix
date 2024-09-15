@@ -23,7 +23,7 @@
   nixpkgs.hostPlatform = "aarch64-darwin";
 
   fonts = {
-    fontDir = enable;
+    fontDir = true;
     fonts = [ (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
   };
 }
