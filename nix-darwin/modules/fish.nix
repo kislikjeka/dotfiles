@@ -2,6 +2,6 @@
 {
   enable = true;
   shellInit = ''
-    set fish greeting
+    set fish_greeting
   '';
 }
