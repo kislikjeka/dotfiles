@@ -12,12 +12,9 @@ in
     stateVersion = "24.05"; # Please read the comment before changing.
 
     packages = with pkgs; [
-      neovim
       ripgrep
-      zoxide
       obsidian
       eza
-      tmux
       fzf
       git
       fd
@@ -30,7 +27,7 @@ in
       VISUAL = "nvim";
     };
 
-    home.sessionPath = [
+    sessionPath = [
       "/run/current-system/sw/bin"
       "$HOME/.nix-profile/bin"
     ];

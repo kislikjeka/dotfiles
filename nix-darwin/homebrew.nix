@@ -15,6 +15,7 @@ _: {
       # "discord"
       # "chrome"
       "raycast"
+      # "wezterm"
       # "slack"
       # "spotify"
       # "visual-studio-code"

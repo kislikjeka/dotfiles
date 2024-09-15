@@ -31,7 +31,7 @@
         {
           imports = [
             (import ./system.nix { inherit self pkgs; })
-            # ./homebrew.nix
+            ./homebrew.nix
           ];
 
           # Auto upgrade nix package and the daemon service.
