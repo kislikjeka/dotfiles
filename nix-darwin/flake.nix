@@ -27,7 +27,7 @@
     }:
     let
       configuration =
-        { pkgs, ... }:
+        { pkgs, lib, ... }:
         {
           imports = [
             (import ./system.nix { inherit self pkgs; })
