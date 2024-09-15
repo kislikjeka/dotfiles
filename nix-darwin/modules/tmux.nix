@@ -9,7 +9,7 @@
   keyMode = "vi";
   newSession = true;
   secureSocket = true;
-  # shell = "${pkgs.fish}/bin/fish";
+  shell = "${pkgs.fish}/bin/fish";
   shortcut = "a";
   terminal = "screen-256color";
 
@@ -27,7 +27,7 @@
         set -g @continuum-save-interval '60' # minutes
       '';
     }
-    ];
+  ];
 
   extraConfig = ''
     set -g default-terminal "tmux-256color"
