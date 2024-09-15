@@ -1,7 +1,7 @@
 {
   description = "My Darwin system flake";
 
-inputs = {
+  inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
@@ -11,71 +11,30 @@ inputs = {
     };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager }:
-  let
-    configuration = { pkgs, lib, ... }: {
-      # List packages installed in system profile. To search by name, run:
-      # $ nix-env -qaP | grep wget
-      
-      environment = {
-        systemPackages = with pkgs; [ 
-          neovim
-          ripgrep
-          zoxide
-          obsidian
-          eza
-          tmux
-          fzf
-          git
+  outputs =
+    inputs@{
+      self,
+      nix-darwin,
+      nixpkgs,
+      home-manager,
+    }:
+    {
+      # Build darwin flake using:
+      # $ darwin-rebuild build --flake .#Evgenijs-MacBook-Pro
+      darwinConfigurations."Evgenijs-MacBook-Pro" = nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        modules = [
+          ./configuration.nix
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.evgenijkislicenko = import ./home.nix;
+          }
         ];
-    };
-
-      # Auto upgrade nix package and the daemon service.
-      services.nix-daemon.enable = true;
-      # nix.package = pkgs.nix;
- nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-             "obsidian"
-           ];
-         
-
-      # Necessary for using flakes on this system.
-      nix.settings.experimental-features = "nix-command flakes";
-
-      # Create /etc/zshrc that loads the nix-darwin environment.
-      programs.zsh.enable = true;  # default shell on catalina
-      programs.fish.enable = true;
-
-      # Set Git commit hash for darwin-version.
-      system.configurationRevision = self.rev or self.dirtyRev or null;
-
-      # Used for backwards compatibility, please read the changelog before changing.
-      # $ darwin-rebuild changelog
-      system.stateVersion = 4;
-      home-manager.backupFileExtension = "backup";
-      nix.configureBuildUsers = true;
-      # The platform the configuration will be used on.
-      nixpkgs.hostPlatform = "aarch64-darwin";
-      users.users.evgenijkislicenko = {
-        home = "/Users/evgenijkislicenko";
       };
-    };
-  in
-  {
-    # Build darwin flake using:
-    # $ darwin-rebuild build --flake .#Evgenijs-MacBook-Pro
-    darwinConfigurations."Evgenijs-MacBook-Pro" = nix-darwin.lib.darwinSystem {
-      system = "aarch64-darwin";
-      modules = [ 
-	configuration
-        home-manager.darwinModules.home-manager {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.evgenijkislicenko = import ./home.nix;
-        }
-      ];
-    };
 
-    # Expose the package set, including overlays, for convenience.
-    darwinPackages = self.darwinConfigurations."Evgenijs-MacBook-Pro".pkgs;
-  };
+      # Expose the package set, including overlays, for convenience.
+      darwinPackages = self.darwinConfigurations."Evgenijs-MacBook-Pro".pkgs;
+    };
 }
