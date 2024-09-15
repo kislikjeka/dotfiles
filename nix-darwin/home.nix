@@ -20,6 +20,7 @@ in
       fd
       bat
       nixfmt-rfc-style
+      home-manager
     ];
 
     sessionVariables = {
@@ -38,6 +39,7 @@ in
   xdg.configFile.nvim.source = mkOutOfStoreSymlink "/Users/evgenijkislicenko/dotfiles/lnvim";
 
   programs = {
+    home-manager.enable = true;
     starship = (import ./modules/starship.nix { inherit pkgs; });
     zoxide = (import ./modules/zoxide.nix { inherit pkgs; });
     neovim = (import ./modules/neovim.nix { inherit config pkgs; });
@@ -46,5 +48,6 @@ in
     tmux = (import ./modules/tmux.nix { inherit pkgs; });
     wezterm = (import ./modules/wezterm.nix { inherit pkgs; });
     k9s = (import ./modules/k9s.nix { inherit pkgs; });
+    lazygit.enable = true;
   };
 }
