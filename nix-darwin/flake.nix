@@ -40,6 +40,16 @@
 
           # Necessary for using flakes on this system.
           nix.settings.experimental-features = "nix-command flakes";
+          nix.optimise.automatic = true;
+          nix.gc = {
+            automatic = true;
+            interval = {
+              Weekday = 0;
+              Hour = 0;
+              Minute = 0;
+            };
+            options = "--delete-older-than 30d";
+          };
 
           # The platform the configuration will be used on.
           nixpkgs.hostPlatform = "aarch64-darwin";

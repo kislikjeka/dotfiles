@@ -12,6 +12,8 @@ in
     stateVersion = "24.05"; # Please read the comment before changing.
 
     packages = with pkgs; [
+      go
+      just
       ripgrep
       obsidian
       eza
@@ -49,5 +51,9 @@ in
     wezterm = (import ./modules/wezterm.nix { inherit pkgs; });
     k9s = (import ./modules/k9s.nix { inherit pkgs; });
     lazygit.enable = true;
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
   };
 }
