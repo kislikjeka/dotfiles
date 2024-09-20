@@ -12,7 +12,6 @@ in
     stateVersion = "24.05"; # Please read the comment before changing.
 
     packages = with pkgs; [
-      go
       just
       ripgrep
       obsidian
@@ -56,5 +55,9 @@ in
       enable = true;
       nix-direnv.enable = true;
     };
+    go = {
+      enable = true;
+      goBin = "go/bin"
+    }
   };
 }
