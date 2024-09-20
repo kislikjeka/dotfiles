@@ -9,7 +9,6 @@
   keyMode = "vi";
   newSession = true;
   secureSocket = true;
-  shell = "${pkgs.fish}/bin/fish";
   shortcut = "a";
   terminal = "screen-256color";
 

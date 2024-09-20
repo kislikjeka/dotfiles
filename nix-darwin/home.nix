@@ -22,11 +22,14 @@ in
       bat
       nixfmt-rfc-style
       home-manager
+      go
     ];
 
-    sessionVariables = {
+    sessionVariables = rec {
       EDITOR = "nvim";
       VISUAL = "nvim";
+      GOPATH = "${config.xdg.dataHome}/go";
+      GOBIN = "${GOPATH}/bin";
     };
 
     sessionPath = [
@@ -37,7 +40,7 @@ in
   };
 
   xdg.enable = true;
-  xdg.configFile.nvim.source = mkOutOfStoreSymlink "/Users/evgenijkislicenko/dotfiles/lnvim";
+  xdg.configFile.nvim.source = mkOutOfStoreSymlink "/Users/evgenijkislicenko/dotfiles/nvim";
 
   programs = {
     home-manager.enable = true;
@@ -45,7 +48,6 @@ in
     # git = (import ./modules/git.nix { inherit pkgs; });
     zoxide = (import ./modules/zoxide.nix { inherit pkgs; });
     neovim = (import ./modules/neovim.nix { inherit config pkgs; });
-    fish = (import ./modules/fish.nix { inherit pkgs; });
     zsh = (import ./modules/zsh.nix { inherit config pkgs; });
     tmux = (import ./modules/tmux.nix { inherit pkgs; });
     wezterm = (import ./modules/wezterm.nix { inherit pkgs; });
@@ -55,9 +57,5 @@ in
       enable = true;
       nix-direnv.enable = true;
     };
-    go = {
-      enable = true;
-      goBin = "go/bin"
-    }
   };
 }

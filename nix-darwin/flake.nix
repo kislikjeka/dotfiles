@@ -64,7 +64,7 @@
           nix.configureBuildUsers = true;
           users.users.evgenijkislicenko = {
             home = "/Users/evgenijkislicenko";
-            shell = pkgs.fish;
+            shell = pkgs.zsh;
           };
         };
     in
