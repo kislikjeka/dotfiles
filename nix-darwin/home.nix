@@ -22,19 +22,19 @@ in
       bat
       nixfmt-rfc-style
       home-manager
-      go
     ];
 
     sessionVariables = rec {
       EDITOR = "nvim";
       VISUAL = "nvim";
-      GOPATH = "${config.xdg.dataHome}/go";
-      GOBIN = "${GOPATH}/bin";
+      GO111MODULE = "on";
     };
 
     sessionPath = [
       "/run/current-system/sw/bin"
       "$HOME/.nix-profile/bin"
+      "$HOME/go/bin"
+      "$HOME/.local/bin"
     ];
 
   };
@@ -56,6 +56,47 @@ in
     direnv = {
       enable = true;
       nix-direnv.enable = true;
+    };
+    go = {
+      enable = true;
+      package = pkgs.go_1_22;
+      goPath = "go";
+      goBin = "go/bin";
+    };
+    git = {
+      enable = true;
+      userName = "kislikjeka";
+      userEmail = "kislichenkojeka@mail.ru";
+
+      ignores = [
+        ".envrc"
+        ".idea"
+        ".DS_Store"
+        ".env"
+        ".pre-commit-config.yaml"
+      ];
+      extraConfig = {
+        core = {
+          sshCommand = "ssh -i $HOME/.ssh/id_ed_personal";
+        };
+      };
+
+      includes = [
+        {
+          contents = {
+            user = {
+              name = "Evgenii Kislichenko";
+              email = "evgenii.kislichenko@indriver.com";
+            };
+
+            core = {
+              sshCommand = "ssh -i $HOME/.ssh/id_ed25519";
+            };
+          };
+
+          condition = "hasconfig:remote.*.url:git@github.com:inDriver/*";
+        }
+      ];
     };
   };
 }
