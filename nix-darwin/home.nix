@@ -77,7 +77,7 @@ in
       ];
       extraConfig = {
         core = {
-          sshCommand = "ssh -i $HOME/.ssh/id_ed_personal";
+          sshCommand = "ssh -i ~/.ssh/id_ed_personal";
         };
       };
 
@@ -90,7 +90,7 @@ in
             };
 
             core = {
-              sshCommand = "ssh -i $HOME/.ssh/id_ed25519";
+              sshCommand = "ssh -i ~/.ssh/id_ed25519";
             };
           };
 
