@@ -78,7 +78,7 @@ in
       extraConfig = {
         core = {
           sshCommand = "ssh -i ~/.ssh/id_ed_personal";
-          autocrlf = true;
+          autocrlf = input;
         };
         url = {
           "git@github.com:" = {
