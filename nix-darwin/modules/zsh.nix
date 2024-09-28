@@ -6,7 +6,7 @@
     path = "${config.xdg.dataHome}/zsh/history";
     ignoreAllDups = true;
   };
-  autosuggestions.enable = true;
+  autosuggestion.enable = true;
   historySubstringSearch.enable = true;
   shellAliases = {
 
