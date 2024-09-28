@@ -3,7 +3,7 @@ _: {
     enable = true;
     caskArgs.no_quarantine = true;
     # Automatically remove packages not contained in list
-    onActivation.cleanup = "zap";
+    # onActivation.cleanup = "zap";
     global.brewfile = true;
     masApps = { };
     taps = [

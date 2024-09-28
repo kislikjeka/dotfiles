@@ -1,9 +1,15 @@
 { config, pkgs, ... }:
 {
   enable = true;
-  history.size = 10000;
-  history.path = "${config.xdg.dataHome}/zsh/history";
+  history = {
+    size = 10000;
+    path = "${config.xdg.dataHome}/zsh/history";
+    ignoreAllDups = true;
+  };
+  autosuggestions.enable = true;
+  historySubstringSearch.enable = true;
   shellAliases = {
+
     ls = "ls --color";
   };
   initExtra = ''

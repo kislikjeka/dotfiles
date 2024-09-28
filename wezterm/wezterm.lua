@@ -37,6 +37,15 @@ config.window_padding = {
 	bottom = 0,
 }
 
+config.keys = {
+	-- Make Option-Left equivalent to Alt-b which many line editors interpret as backward-word
+	{ key = "LeftArrow", mods = "OPT", action = wezterm.action({ SendString = "\x1bb" }) },
+	-- Make Option-Right equivalent to Alt-f; forward-word
+	{ key = "RightArrow", mods = "OPT", action = wezterm.action({ SendString = "\x1bf" }) },
+	{ key = "b", mods = "CTRL", action = wezterm.action({ SendString = "\x1bb" }) },
+	-- Make Option-Right equivalent to Alt-f; forward-word
+	{ key = "f", mods = "CTRL", action = wezterm.action({ SendString = "\x1bf" }) },
+}
 local scheme = wezterm.get_builtin_color_schemes()["Tokyo Night"]
 --scheme.brights[1] = scheme.ansi[1]
 config.color_schemes = { ["Tokyo Night"] = scheme }

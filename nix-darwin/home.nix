@@ -102,6 +102,20 @@ in
 
           condition = "hasconfig:remote.*.url:git@github.com:inDriver/*";
         }
+        {
+          contents = {
+            user = {
+              name = "Evgenii Kislichenko";
+              email = "evgenii.kislichenko@indriver.com";
+            };
+
+            core = {
+              sshCommand = "ssh -i ~/.ssh/id_ed25519";
+            };
+          };
+
+          condition = "hasconfig:remote.*.url:https://github.com/inDriver/*";
+        }
       ];
     };
   };
