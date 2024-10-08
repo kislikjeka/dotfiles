@@ -45,7 +45,6 @@ in
   programs = {
     home-manager.enable = true;
     starship = (import ./modules/starship.nix { inherit pkgs; });
-    # git = (import ./modules/git.nix { inherit pkgs; });
     zoxide = (import ./modules/zoxide.nix { inherit pkgs; });
     neovim = (import ./modules/neovim.nix { inherit config pkgs; });
     zsh = (import ./modules/zsh.nix { inherit config pkgs; });
