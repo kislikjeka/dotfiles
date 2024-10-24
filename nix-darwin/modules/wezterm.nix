@@ -5,7 +5,7 @@
   extraConfig = ''
     local config = {}
 
-    config.enable_tab_bar = false
+    --config.enable_tab_bar = false
 
     config.max_fps = 75
     config.animation_fps = 75

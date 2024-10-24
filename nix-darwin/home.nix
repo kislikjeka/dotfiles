@@ -22,6 +22,8 @@ in
       bat
       nixfmt-rfc-style
       home-manager
+      nixd
+      rustup
     ];
 
     sessionVariables = rec {
@@ -55,6 +57,8 @@ in
     direnv = {
       enable = true;
       nix-direnv.enable = true;
+      silent = true;
+      config.global.hide_env_diff = true;
     };
     go = {
       enable = true;
