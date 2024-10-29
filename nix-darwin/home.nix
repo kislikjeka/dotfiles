@@ -3,7 +3,8 @@
 
 { config, pkgs, ... }:
 let
-  inherit (config.lib.file) mkOutOfStoreSymlink;
+  link = config.lib.file.mkOutOfStoreSymlink;
+  dotfiles = "${config.home.homeDirectory}/dotfiles";
 in
 {
   home = {
@@ -39,10 +40,19 @@ in
       "$HOME/.local/bin"
     ];
 
+    file = {
+      ".config/wezterm" = {
+        source = link "${dotfiles}/wezterm";
+        recursive = true;
+      };
+    };
+
   };
 
   xdg.enable = true;
-  xdg.configFile.nvim.source = mkOutOfStoreSymlink "/Users/evgenijkislicenko/dotfiles/nvim";
+  # wezterm produces its own wezterm.lua file which causes conflict
+  xdg.configFile."wezterm/wezterm.lua".enable = false;
+  xdg.configFile.nvim.source = link "${dotfiles}/nvim";
 
   programs = {
     home-manager.enable = true;
@@ -51,7 +61,10 @@ in
     neovim = (import ./modules/neovim.nix { inherit config pkgs; });
     zsh = (import ./modules/zsh.nix { inherit config pkgs; });
     tmux = (import ./modules/tmux.nix { inherit pkgs; });
-    wezterm = (import ./modules/wezterm.nix { inherit pkgs; });
+    wezterm = {
+      enable = true;
+      enableZshIntegration = true;
+    };
     k9s = (import ./modules/k9s.nix { inherit pkgs; });
     lazygit.enable = true;
     direnv = {
@@ -88,7 +101,6 @@ in
           };
         };
       };
-
       includes = [
         {
           contents = {
