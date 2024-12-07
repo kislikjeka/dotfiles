@@ -9,13 +9,13 @@ _: {
     taps = [
       # "homebrew/cask-versions"
     ];
-    # Ideally leave this empty and only use nix to manage this 
+    # Ideally leave this empty and only use nix to manage this
     brews = [ ];
     casks = [
       # "discord"
-      # "chrome"
+      "aerospace"
       "raycast"
-      # "wezterm"
+      "wezterm"
       # "slack"
       # "spotify"
       # "visual-studio-code"

@@ -8,7 +8,7 @@
   };
   historySubstringSearch.enable = true;
   shellAliases = {
-    vi = "nvim";
+    v = "nvim";
     ls = "ls --color";
   };
   initExtra = ''

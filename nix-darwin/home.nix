@@ -1,10 +1,10 @@
 # home.nix
-# home-manager switch 
+# home-manager switch
 
 { config, pkgs, ... }:
 let
   link = config.lib.file.mkOutOfStoreSymlink;
-  dotfiles = "${config.home.homeDirectory}/dotfiles";
+  dotfiles = "/Users/evgenijkislicenko/dotfiles";
 in
 {
   home = {
@@ -38,21 +38,18 @@ in
       "$HOME/.nix-profile/bin"
       "$HOME/go/bin"
       "$HOME/.local/bin"
+      "$HOME/.cargo/bin"
     ];
-
-    file = {
-      ".config/wezterm" = {
-        source = link "${dotfiles}/wezterm";
-        recursive = true;
-      };
-    };
-
   };
 
-  xdg.enable = true;
-  # wezterm produces its own wezterm.lua file which causes conflict
-  xdg.configFile."wezterm/wezterm.lua".enable = false;
-  xdg.configFile.nvim.source = link "${dotfiles}/nvim";
+  xdg = {
+    enable = true;
+    configFile = {
+      nvim.source = link "${dotfiles}/nvim";
+      "wezterm".source = link "${dotfiles}/wezterm";
+      "aerospace".source = link "${dotfiles}/aerospace";
+    };
+  };
 
   programs = {
     home-manager.enable = true;
@@ -61,10 +58,6 @@ in
     neovim = (import ./modules/neovim.nix { inherit config pkgs; });
     zsh = (import ./modules/zsh.nix { inherit config pkgs; });
     tmux = (import ./modules/tmux.nix { inherit pkgs; });
-    wezterm = {
-      enable = true;
-      enableZshIntegration = true;
-    };
     k9s = (import ./modules/k9s.nix { inherit pkgs; });
     lazygit.enable = true;
     direnv = {
@@ -90,6 +83,7 @@ in
         ".DS_Store"
         ".env"
         ".pre-commit-config.yaml"
+        ".devenv"
       ];
       extraConfig = {
         core = {
