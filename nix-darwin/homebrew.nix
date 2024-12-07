@@ -16,7 +16,7 @@ _: {
       "aerospace"
       "raycast"
       "wezterm"
-      # "slack"
+      "zed"
       # "spotify"
       # "visual-studio-code"
       # "vlc"
