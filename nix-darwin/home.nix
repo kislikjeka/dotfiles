@@ -46,7 +46,7 @@ in
     enable = true;
     configFile = {
       nvim.source = link "${dotfiles}/nvim";
-      "wezterm".source = link "${dotfiles}/wezterm";
+      "ghostty".source = link "${dotfiles}/ghostty";
       "aerospace".source = link "${dotfiles}/aerospace";
     };
   };

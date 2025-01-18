@@ -183,12 +183,20 @@ if.app-id = 'dev.zed.Zed'
 run = ['move-node-to-workspace C']
 
 [[on-window-detected]]
+if.app-id = 'com.apple.Safari'
+run = ['move-node-to-workspace B']
+
+[[on-window-detected]]
 if.app-id = 'org.mozilla.com.zen.browser'
 run = ['move-node-to-workspace B']
 
 [[on-window-detected]]
-if.app-id = 'com.github.wez.wezterm'
+if.app-id = 'com.mitchellh.ghostty'
 run = ['move-node-to-workspace T']
+
+[[on-window-detected]]
+if.app-id = 'com.spotify.client'
+run = ['move-node-to-workspace M']
 
 [[on-window-detected]]
 if.app-id = 'ru.keepcoder.Telegram'

@@ -15,7 +15,6 @@ _: {
       # "discord"
       "raycast"
       "nikitabobko/tap/aerospace"
-      "wezterm"
       "zed"
       "ghostty"
       # "spotify"
