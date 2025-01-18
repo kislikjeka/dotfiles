@@ -13,10 +13,11 @@ _: {
     brews = [ ];
     casks = [
       # "discord"
-      "aerospace"
       "raycast"
+      "nikitabobko/tap/aerospace"
       "wezterm"
       "zed"
+      "ghostty"
       # "spotify"
       # "visual-studio-code"
       # "vlc"
