@@ -25,6 +25,7 @@ in
       home-manager
       nixd
       rustup
+      sqlc
     ];
 
     sessionVariables = rec {

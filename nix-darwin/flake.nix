@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nix-darwin.url = "github:LnL7/nix-darwin";
+    nix-darwin.url = "github:LnL7/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
     homebrew-cask = {
@@ -35,7 +35,6 @@
           ];
 
           # Auto upgrade nix package and the daemon service.
-          services.nix-daemon.enable = true;
           nix.package = pkgs.nix;
 
           # Necessary for using flakes on this system.
@@ -61,7 +60,6 @@
 
           programs.zsh.enable = true;
 
-          nix.configureBuildUsers = true;
           users.users.evgenijkislicenko = {
             home = "/Users/evgenijkislicenko";
             shell = pkgs.zsh;
